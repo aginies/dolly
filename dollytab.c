@@ -380,13 +380,13 @@ void parse_dollytab(FILE *df,struct dollytab * mydollytab) {
         }
         if(strcmp(mydollytab->hostring[i],host) == 0) {
           me = i;
-          strncpy(mydollytab->myhostname,host,strlen(host));
+          memcpy(mydollytab->myhostname,host,strlen(host));
         } else if(!mydollytab->hyphennormal) {
           /* Check if the hostname is correct, but a different interface is used */
           if((sp = strchr(mydollytab->hostring[i], '-')) != NULL) {
             if(strncmp(mydollytab->hostring[i], host, sp - mydollytab->hostring[i]) == 0) {
               me = i;
-              strncpy(mydollytab->myhostname,host,strlen(host));
+              memcpy(mydollytab->myhostname,host,strlen(host));
             }
           }
         }
@@ -397,7 +397,7 @@ void parse_dollytab(FILE *df,struct dollytab * mydollytab) {
        mname = getenv("MYNODENAME");
        if(mname != NULL) {
           if(strcmp(mydollytab->hostring[i],mname) == 0) {
-            strncpy(mydollytab->myhostname,mname,strlen(mname));
+            memcpy(mydollytab->myhostname,mname,strlen(mname));
             me = i;
             if(i == mydollytab->hostnr-1) {
              mydollytab->melast = 1;
@@ -409,7 +409,7 @@ void parse_dollytab(FILE *df,struct dollytab * mydollytab) {
        mname = getenv("HOST");
        if(mname != NULL) {
           if(strcmp(mydollytab->hostring[i],mname) == 0) {
-            strncpy(mydollytab->myhostname,mname,strlen(mname));
+            memcpy(mydollytab->myhostname,mname,strlen(mname));
             me = i;
             if(i == mydollytab->hostnr-1) {
              mydollytab->melast = 1;
