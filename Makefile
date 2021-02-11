@@ -1,6 +1,7 @@
 CXX = g++
 CC = gcc
-CFLAGS += -std=gnu11 -s -O -fPIE $(RPM_OPT_FLAGS)
+# -std=gnu11
+CFLAGS += -s -O3 -fPIE $(RPM_OPT_FLAGS)
 WARNINGS = -Werror -Wall -Wextra -pedantic-errors
 LDFLAGS =
 LIBRARIES =
